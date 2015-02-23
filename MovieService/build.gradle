@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'movie-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("com.fasterxml.jackson.core:jackson-core:latest.release")
+    compile("com.fasterxml.jackson.core:jackson-databind:latest.release")
+    compile("com.fasterxml.jackson.core:jackson-annotations:latest.release")
+    compile("com.netflix.hystrix:hystrix-core:latest.release")
+    compile("io.reactivex:rxnetty:latest.release")
+    compile("com.netflix.hystrix:hystrix-metrics-event-stream:latest.release")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
